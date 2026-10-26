@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-sand-50 text-charcoal-800 font-sans;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+  }
+
+  ::selection {
+    @apply bg-charcoal-900 text-sand-50;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .container-editorial {
+    @apply max-w-8xl mx-auto px-6 md:px-10 lg:px-16;
+  }
+
+  .container-wide {
+    @apply max-w-9xl mx-auto px-6 md:px-10 lg:px-16;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 bg-charcoal-900 text-sand-50 text-sm font-medium tracking-wide uppercase transition-all duration-500 ease-out-expo hover:bg-charcoal-800 hover:tracking-wider;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 border border-charcoal-300 text-charcoal-800 text-sm font-medium tracking-wide uppercase transition-all duration-500 ease-out-expo hover:border-charcoal-900 hover:bg-charcoal-900 hover:text-sand-50;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 text-sm font-medium tracking-wide uppercase text-charcoal-600 transition-all duration-300 hover:text-charcoal-900 hover:tracking-wider;
+  }
+
+  .link-underline {
+    @apply relative inline-block after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-current after:transition-all after:duration-500 after:ease-out-expo hover:after:w-full;
+  }
+
+  .label-eyebrow {
+    @apply text-xs font-medium uppercase tracking-[0.2em] text-charcoal-400;
+  }
+
+  .label-eyebrow-light {
+    @apply text-xs font-medium uppercase tracking-[0.2em] text-sand-300/80;
+  }
+
+  .image-zoom {
+    @apply overflow-hidden;
+  }
+
+  .image-zoom img {
+    @apply transition-transform duration-[1.2s] ease-out-expo;
+  }
+
+  .image-zoom:hover img {
+    @apply scale-105;
+  }
+
+  .skeleton {
+    @apply bg-gradient-to-r from-sand-100 via-sand-200 to-sand-100 bg-[length:200%_100%] animate-shimmer;
+  }
+
+  .scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .perspective {
+    perspective: 1000px;
+  }
+
+  .fade-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .fade-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
